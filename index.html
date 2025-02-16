@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Develpoment</title>
+    <link rel="icon" href="Images\site-icon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+          <img src="Images\Sidebar-logo.png" alt="logo">
+          <h2>Hi! I am Aditya</h2>
+        </div>
+        <ul class="links">
+            <h4>Some Links</h4>
+            <li>
+              <a href="https://leetcode.com/u/Adi0026/">
+                <span class="material-symbols-outlined">LeetCode</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/ItzAditya43">
+                <span class="material-symbols-outlined">Github</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/adityapandey10/">
+                <span class="material-symbols-outlined">LinkedIn</span>
+              </a>
+            </li>
+          </ul>
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </aside>
+    <video autoplay loop muted>
+        <source src="Background custom\Genshin Impact - Xiao [Live Wallpaper].mp4" type="video/mp4">
+    </video>
+    <header>
+        <h1>My Web Portfolio</h1>
+    </header>
+
+    <div class="content-container">
+    
+    
+        <section id="profile">
+          <h2 class="winged-title">
+            <img src="Heading icon gif\chibi1.gif" class="chibi-image"> Personal Profile <img src="Heading icon gif\chibi2.gif" class="chibi-image">
+          </h2>
+            <img src="Images\Img.jpg" alt="Profile Picture">
+            <div class="bio-container">
+              <p>I'm <span class="highlight">Aditya Pandey</span>, a 2nd-year <span class="highlight">Computer Science & Design</span> student at RGIPT.</p>
+              <p>Passionate about <span class="highlight">Machine Learning, AI, Web Development, and Blockchain</span>.</p>
+              <p>Currently working on an <span class="highlight">AI-powered code editor</span> and improving my skills in <span class="highlight">MERN stack, UI/UX, and ML solutions</span>. (Still under work)</p>
+              <p>Beyond coding, I enjoy <span class="highlight">anime & manga</span>, <span class="highlight">hitting the gym</span>, watching & playing <span class="highlight">football</span>, and brainstorming <span class="highlight">programming ideas</span>.</p>
+              <p class="cta">🚀 Let’s build something amazing!</p>
+          </div>          
+        </section>
+    
+        <section id="education">
+          <h2 class="winged-title">
+            <img src="Heading icon gif\chibi3.gif" class="chibi-image"> Education <img src="Heading icon gif\chibi4.gif" class="chibi-image">
+          </h2>
+        
+            <table>
+                <tr><th>Degree</th><th>Institute</th><th>Year</th></tr>
+                <tr><td>Class 10th</td><td>D.A.V. Public School</td><td>till 2020</td></tr>
+                <tr><td>Class 12th</td><td>New Horizon Scholars School</td><td>2020-22</td></tr>
+                <tr><td>B.Tech in Computer Science and Design</td><td>Rajiv Gandhi Institute of Petroleum Technology</td><td>2023-27</td></tr>
+            </table>
+            <h3 class="winged-title">
+              <img src="Heading icon gif\chibi5.gif" class="chibi-image"> Skills <img src="Heading icon gif\chibi6.gif" class="chibi-image">
+            </h3>
+            <div class="skill-container">
+                <div class="skill-bar">
+                    <span class="skill-fill web">Web Develpoment - 80%</span>
+                </div>
+                <div class="skill-bar">
+                    <span class="skill-fill dsa">Data Structure and Algorithm - 70%</span>
+                </div>
+                <div class="skill-bar">
+                  <span class="skill-fill ml">Machine Learning - 50%</span>
+              </div>
+              <div class="skill-bar">
+                <span class="skill-fill da">Data Analysis - 75%</span>
+            </div>
+            </div>
+          
+        </section>
+
+        <section>
+          <div class="quote-container">
+            <p id="quote-text">Click the button for a random quote!</p>
+            <button id="quote-btn">🔄</button>
+        </div>
+        </section>
+
+        <section id="web-tech">
+          <h2 class="winged-title">
+             Introduction to Web Technologies<img src="Heading icon gif\chibi7.gif" class="chibi-image">
+          </h2>
+             <p>
+             Web technologies are the foundation of the modern internet. They enable developers to create 
+             dynamic, interactive, and visually appealing websites. The three main technologies in web development are:
+            </p>
+         
+           <table class="tech-table">
+             <tr>
+                 <th><img src="Images\html.png" alt="HTML"></th>
+                 <th><img src="Images\css.png" alt="CSS"></th>
+                 <th><img src="Images\js.png" alt="JavaScript"></th>
+             </tr>
+             <tr>
+                 <td><b>HTML</b></td>
+                 <td><b>CSS</b></td>
+                 <td><b>JavaScript</b></td>
+             </tr>
+             <tr>
+               <td>Defines the structure of a webpage using elements like headings, paragraphs, links, and images.</td>
+               <td>Controls the visual appearance of a webpage, including layout, colors, fonts, and animations.</td>
+               <td>Adds interactivity, allowing dynamic content, form validation, animations, and real-time updates.</td>
+             </tr>
+             <tr>
+               <td><b>Key Features:</b><br> - Uses tags & elements<br> - Forms the backbone of webpages<br> - Works with CSS & JS</td>
+               <td><b>Key Features:</b><br> - Styles HTML elements<br> - Supports responsive design<br> - Uses flexbox & grid</td>
+               <td><b>Key Features:</b><br> - Enables DOM manipulation<br> - Supports event handling<br> - Works with APIs</td>
+             </tr>
+         </section>
+
+
+      
+    <div class="audio-container">
+        <span id="audio-status">Music</span>
+        <button id="audio-toggle" onclick="toggleAudio()">🔊</button>
+        <audio id="background-audio" loop>
+            <source src="Background custom\FGO.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
