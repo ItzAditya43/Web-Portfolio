@@ -34,28 +34,85 @@ document.getElementById("quote-btn").addEventListener("click", function() {
 });
 
 
+// Save this in a separate file (e.g., music-player.js) or inside a <script> tag at the bottom of your HTML
 
-const audio = document.getElementById("background-audio");
-        const audioToggle = document.getElementById("audio-toggle");
-        const audioStatus = document.getElementById("audio-status");
+// References to DOM elements
+const audio = document.getElementById("audio");
+const muteBtn = document.getElementById("mute-btn");
+const trackTitle = document.getElementById("track-title");
 
-        function toggleAudio() {
-            if (audio.paused) {
-                audio.play();
-                audioToggle.textContent = "🔊";
-                audioStatus.textContent = "Playing: Theme";
-            } else {
-                audio.pause();
-                audioToggle.textContent = "🔇";
-                audioStatus.textContent = "Paused: Theme";
-            }
-        }
-        document.addEventListener("DOMContentLoaded", function () {
-            let audio = document.getElementById("background-audio");
-            if (audio) {
-                audio.volume = 0.2; // Set volume (0.0 to 1.0)
-            }
-        });
+// Define your playlist
+const playlist = [
+  {
+    title: "Slash of Void",
+    src: "Background custom/FGO.mp3",
+    bg: "Background custom/FGO.gif"
+  },
+  {
+    title: "Flowers",
+    src: "Background custom/Flowers.mp3",
+    bg: "Background custom/Flowers.gif"
+  },
+  {
+    title: "Genshin Main Theme",
+    src: "Background custom/Genshin.mp3",
+    bg: "Background custom/Genshin Main Theme.gif"
+  }
+];
+let infoTimeout;
+let currentIndex = 0;
+let isMuted = false;
+
+// Set a default volume (0.0 to 1.0)
+audio.volume = 0.5;
+
+// Load the first track and start playing
+window.addEventListener("DOMContentLoaded", () => {
+  loadTrack(currentIndex);
+  audio.play();
+});
+
+// Load a track by index
+function loadTrack(index) {
+  const track = playlist[index];
+  audio.src = track.src;
+  trackTitle.textContent = track.title;
+
+  document.querySelector('.music-player').style.backgroundImage = `url("${track.bg}")`;
+
+  fadeInInfo();
+  if (infoTimeout) clearTimeout(infoTimeout);
+  infoTimeout = setTimeout(fadeOutInfo, 4000);
+}
+
+// When the current track ends, move to the next track and loop back
+audio.addEventListener("ended", () => {
+  currentIndex = (currentIndex + 1) % playlist.length;
+  loadTrack(currentIndex);
+  audio.play();
+});
+
+muteBtn.addEventListener("click", () => {
+  isMuted = !isMuted;
+  audio.muted = isMuted;
+  muteBtn.textContent = isMuted ? "🔇" : "🔊";
+  
+  // On mute toggle, fade in the track info for 4 seconds
+  fadeInInfo();
+  if (infoTimeout) clearTimeout(infoTimeout);
+  infoTimeout = setTimeout(fadeOutInfo, 4000);
+});
+
+function fadeInInfo() {
+  document.querySelector(".track-info").classList.remove("fade-out");
+}
+
+function fadeOutInfo() {
+  document.querySelector(".track-info").classList.add("fade-out");
+}
+
+
+
 
         function toggleDarkMode() {
             document.documentElement.classList.toggle("dark-mode");

@@ -127,17 +127,23 @@
              </tr>
          </section>
 
-
-      
-    <div class="audio-container">
-        <span id="audio-status">Music</span>
-        <button id="audio-toggle" onclick="toggleAudio()">🔊</button>
-        <audio id="background-audio" loop>
-            <source src="Background custom\FGO.mp3" type="audio/mpeg">
-        </audio>
-    </div>
+<div class="music-player">
+  <!-- Audio element to handle playback -->
+  <audio id="audio"></audio>
+  
+  <!-- Mute/Unmute Button -->
+  <button id="mute-btn" class="mute-btn">🔊</button>
+  
+  <!-- Display Current Track Info -->
+  <div class="track-info">
+    <span id="track-title">Loading...</span>
+  </div>
+</div>
 
     <script src="script.js"></script>
+
+      </div>
+    </div>
     
 </body>
 </html>
