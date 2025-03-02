@@ -33,9 +33,6 @@ document.getElementById("quote-btn").addEventListener("click", function() {
     document.getElementById("quote-text").textContent = quotes[randomIndex];
 });
 
-
-// Save this in a separate file (e.g., music-player.js) or inside a <script> tag at the bottom of your HTML
-
 // References to DOM elements
 const audio = document.getElementById("audio");
 const muteBtn = document.getElementById("mute-btn");
@@ -110,9 +107,6 @@ function fadeInInfo() {
 function fadeOutInfo() {
   document.querySelector(".track-info").classList.add("fade-out");
 }
-
-
-
 
         function toggleDarkMode() {
             document.documentElement.classList.toggle("dark-mode");
