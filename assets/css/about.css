@@ -1,0 +1,226 @@
+/* Cursor and split background styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    cursor: none; /* Hide default cursor */
+  }
+  
+  /* Cursor Styles */
+  .cursor {
+    pointer-events: none;
+    will-change: opacity;
+    z-index: 99999; /* Higher z-index to ensure it's above everything */
+    position: fixed; /* Make sure the container is fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .cursor span {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999; /* Higher z-index to ensure it's above all content */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    will-change: transform;
+    filter: blur(2px);
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    opacity: 0.9;
+    /* No mix-blend-mode by default - we'll control it in JS */
+  }
+  
+  /* Default cursor colors */
+  .cursor span:nth-child(1) {
+    background: blue;
+  }
+  
+  .cursor span:nth-child(2) {
+    background: #00ff00;
+  }
+  
+  .cursor span:nth-child(3) {
+    background: red;
+  }
+  
+  /* Make links and other interactive elements hoverable */
+  a, button, .hoverable {
+    cursor: none;
+  }
+  
+  /* Hover animations */
+  .hoverable {
+    transition: transform 0.3s ease;
+  }
+  
+  .hoverable:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Main layout and split background */
+  .about-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .about-container h1 {
+    position: absolute;
+    top: 40px;
+    font-size: min(10vw, 50px);
+    text-align: center;
+    color: white;
+    mix-blend-mode: difference;
+    z-index: 90; /* Lower than cursor z-index */
+    width: 100%;
+    margin: 0;
+  }
+  
+  .content-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    z-index: 1; /* Ensure sections stay below cursor */
+  }
+  
+  .left-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #010101;
+    color: #ffffff;
+  }
+  
+  .right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  .profile-image {
+    margin-bottom: 30px;
+  }
+  
+  .profile-image img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    border: 3px solid #FF00FF;
+  }
+  
+  .intro-text {
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+  }
+  
+  .intro-text h2 {
+    color: #FF00FF;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #000000;
+  }
+  
+  .details-section {
+    background-color: #010101;
+    border-radius: 10px;
+    padding: 25px;
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .details-section h2 {
+    margin-bottom: 20px;
+    color: #FF00FF;
+    text-align: center;
+  }
+  
+  .details-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .details-section li {
+    padding: 12px 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+  
+  .details-section li:last-child {
+    border-bottom: none;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .content-wrapper {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .left-section, .right-section {
+      min-height: 100vh;
+    }
+  
+    .about-container h1 {
+      position: relative;
+      top: 20px;
+      margin-bottom: 40px;
+    }
+  }
+
+  /* Add a custom class for translucent cursor state */
+.cursor.is-hovering span {
+  opacity: 0.5 !important; /* Force transparency when hovering */
+  transition: opacity 0.2s ease;
+}
+
+/* Ensure proper handling of cursor in the details section */
+.details-section .hoverable:hover ~ .cursor span {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  mix-blend-mode: difference !important;
+}
+
+/* Ensure consistent cursor behavior on mobile */
+@media (max-width: 768px) {
+  .cursor {
+    display: none !important; /* Hide custom cursor on mobile devices */
+  }
+  
+  body.custom-cursor-active {
+    cursor: auto !important; /* Restore default cursor for mobile */
+  }
+  
+  body.custom-cursor-active * {
+    cursor: auto !important; /* Restore default cursor for all elements */
+  }
+}
